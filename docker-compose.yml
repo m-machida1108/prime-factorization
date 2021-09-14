@@ -1,0 +1,9 @@
+version: "3"
+services:
+  app:
+    container_name: prime-factorization
+    build:
+      context: ./build/
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/go/src/github.com/m-machida1108/prime-factorization
