@@ -17,7 +17,7 @@ func Is(target int64) bool {
 	return true
 }
 
-func Fanctorization(target int64) []int64 {
+func Factorization(target int64) []int64 {
 	if target == 0 || target == 1 {
 		return []int64{}
 	}

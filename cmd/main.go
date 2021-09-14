@@ -39,7 +39,7 @@ func exec(args []string) error {
 		log.Printf("%d は素数です。\n", target)
 		return nil
 	}
-	res := primenum.Fanctorization(target)
+	res := primenum.Factorization(target)
 	msgArray := make([]string, len(res))
 	for i, r := range res {
 		msgArray[i] = strconv.FormatInt(r, 10)
