@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	maxIn int64 = 1000000000
+	maxIn int64 = 1000000000000
 )
 
 type Err struct {
@@ -20,7 +20,7 @@ type Err struct {
 }
 
 func (e Err) Error() string {
-	return e.Msg
+	return fmt.Sprintf("%s, error code[%d]", e.Msg, e.Code)
 }
 
 func main() {
@@ -51,20 +51,20 @@ func exec(args []string) error {
 
 func validationParam(args []string) error {
 	if args == nil {
-		return Err{"数値を１つ指定してください", 400}
+		return Err{"数値を１つ指定してください", 1}
 	}
 	if len(args) != 1 {
-		return Err{"引数の数が不正です", 400}
+		return Err{"引数の数が不正です", 2}
 	}
 	converted, err := strconv.ParseInt(args[0], 10, 64)
 	if err != nil {
-		return Err{"数値を指定してください", 400}
+		return Err{"数値を指定してください", 3}
 	}
 	if converted > maxIn {
-		return Err{fmt.Sprintf("%d以下の数値を指定してください", maxIn), 400}
+		return Err{fmt.Sprintf("%d以下の数値を指定してください", maxIn), 4}
 	}
 	if converted <= 0 {
-		return Err{"1以上の数値を指定してください", 400}
+		return Err{"1以上の数値を指定してください", 5}
 	}
 	return nil
 }
